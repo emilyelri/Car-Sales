@@ -12,7 +12,7 @@ const App = () => {
   };
 
   const buyItem = item => {
-    // dipsatch an action here to add an item
+    // dispatch an action here to add an item
   };
 
   return (
@@ -29,4 +29,11 @@ const App = () => {
   );
 };
 
-export default connect(null, {})(App);
+const mapStateToProps = state => {
+  return {
+    car: state.car,
+    additionalPrice: state.additionalPrice
+  };
+};
+
+export default connect(mapStateToProps, { })(App);
