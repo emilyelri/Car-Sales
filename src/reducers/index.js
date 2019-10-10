@@ -19,13 +19,14 @@ const initialState = {
 export const carReducer = (state = initialState, action) => {
   switch(action.type) {
       case ADD_ITEM:
+          console.log("Adding item: ", state)
           return {
             ...state,
             additionalPrice: (state.additionalPrice + action.payload.price),
-            car: {...state.car, features: [...state.car.features, action.payload],
-            store: state.store.filter(item => !(item.id === action.payload.id)) }
-          }
+            car: {...state.car, features: [...state.car.features, action.payload]},
+            store: state.store.filter(item => (item.id !== action.payload.id)) }
       case REMOVE_ITEM:
+        console.log("Removing item: ", state)
           return {...state,
             additionalPrice: (state.additionalPrice - action.payload.price),
             car: {...state.car, features: state.car.features.filter(item => !(item.id===action.payload.id))},
